@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(lsof -i :3000 -sTCP:LISTEN)",
+      "Bash(node --input-type=module --eval \"import\\('./app/sitemap.ts'\\).catch\\(\\(\\)=>{}\\)\")"
+    ]
+  }
+}

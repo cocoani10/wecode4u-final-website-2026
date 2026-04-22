@@ -1,0 +1,200 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* WeCode4U Brand Colors - LIGHT THEME ONLY */
+  --background: #ffffff;
+  --background-alt: #fafaf9;
+  --foreground: #1a1916;
+  --accent: #fb6e3e;
+  --accent-hover: #e85a2a;
+  --accent-light: rgba(251, 110, 62, 0.1);
+  
+  /* Card & Surface */
+  --card: #ffffff;
+  --card-foreground: #1a1916;
+  --popover: #ffffff;
+  --popover-foreground: #1a1916;
+  
+  /* Primary/Secondary */
+  --primary: #fb6e3e;
+  --primary-foreground: #ffffff;
+  --secondary: #fafaf9;
+  --secondary-foreground: #1a1916;
+  
+  /* Muted */
+  --muted: #f5f5f4;
+  --muted-foreground: #78716c;
+  
+  /* Accent */
+  --accent-color: #fb6e3e;
+  --accent-foreground: #ffffff;
+  
+  /* Borders & Input */
+  --border: #e7e5e4;
+  --input: #e7e5e4;
+  --ring: #fb6e3e;
+  
+  /* Radius */
+  --radius: 0.75rem;
+  
+  /* Shadows - Warm tinted */
+  --shadow-sm: 0 1px 2px rgba(26, 25, 22, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(26, 25, 22, 0.05), 0 2px 4px -2px rgba(26, 25, 22, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(26, 25, 22, 0.08), 0 4px 6px -4px rgba(26, 25, 22, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(26, 25, 22, 0.08), 0 8px 10px -6px rgba(26, 25, 22, 0.05);
+  --shadow-orange: 0 0 40px rgba(251, 110, 62, 0.15);
+  
+  /* Chart colors */
+  --chart-1: #fb6e3e;
+  --chart-2: #f59e0b;
+  --chart-3: #10b981;
+  --chart-4: #3b82f6;
+  --chart-5: #8b5cf6;
+}
+
+@theme inline {
+  --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent-color);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(251, 110, 62, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(251, 110, 62, 0.4); }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pulse-node {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+@keyframes draw-line {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes check-appear {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes progress-fill {
+  from { width: 0%; }
+  to { width: var(--progress-width, 100%); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Scrollbar hide utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Blog article body typography */
+.prose-article h2 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: #1a1916;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.prose-article h3 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #1a1916;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+  margin-top: 2.25rem;
+  margin-bottom: 0.625rem;
+}
+
+.prose-article p {
+  font-size: 1rem;
+  color: #44403c;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
