@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     description: 'WeCode4U is a trusted custom software development company with 30+ years of experience. We build enterprise web apps, mobile solutions, and cloud infrastructure for ambitious companies in the US and globally.',
     images: [
       {
-        url: 'https://www.wecode4u.com/og-image.png',
+        url: 'https://wecode4u.com/og-image.png',
         width: 1200,
         height: 630,
         alt: 'WeCode4U — Custom Software Development Company',
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'WeCode4U — Custom Software Development Company',
     description: 'WeCode4U is a trusted custom software development company with 30+ years of experience. Enterprise software, mobile apps, and cloud solutions.',
-    images: ['https://www.wecode4u.com/og-image.png'],
+    images: ['https://wecode4u.com/og-image.png'],
   },
   alternates: {
     canonical: 'https://www.wecode4u.com',
