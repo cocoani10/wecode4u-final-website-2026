@@ -13,8 +13,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.wecode4u.com'),
   title: {
-    template: '%s | WeCode4U — Custom Software Development Company',
-    default: 'WeCode4U — Custom Software Development Company',
+    template: 'WeCode4U | %s',
+    default: 'WeCode4U | Custom Software Development Company',
   },
   description: 'WeCode4U is a trusted custom software development company with 30+ years of experience. We build enterprise web apps, mobile solutions, and cloud infrastructure for ambitious companies in the US and globally.',
   keywords: [
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://www.wecode4u.com',
     siteName: 'WeCode4U',
-    title: 'WeCode4U — Custom Software Development Company',
+    title: 'WeCode4U | Custom Software Development Company',
     description: 'WeCode4U is a trusted custom software development company with 30+ years of experience. We build enterprise web apps, mobile solutions, and cloud infrastructure for ambitious companies in the US and globally.',
     images: [
       {
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'WeCode4U — Custom Software Development Company',
+    title: 'WeCode4U | Custom Software Development Company',
     description: 'WeCode4U is a trusted custom software development company with 30+ years of experience. Enterprise software, mobile apps, and cloud solutions.',
     images: ['https://wecode4u.com/og-image.png'],
   },
