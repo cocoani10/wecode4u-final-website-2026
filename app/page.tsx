@@ -7,10 +7,10 @@ import { Testimonial } from "@/components/testimonial"
 import { CTA } from "@/components/cta"
 
 export const metadata: Metadata = {
-  title: 'Custom Software Development Company | WeCode4U',
+  title: 'WeCode4U | Custom Software Development Company',
   description: 'WeCode4U is a trusted custom software development company with 30+ years of experience. We build enterprise web apps, mobile solutions, and cloud infrastructure for ambitious companies in the US and globally.',
   openGraph: {
-    title: 'Custom Software Development Company | WeCode4U',
+    title: 'WeCode4U | Custom Software Development Company',
     description: 'WeCode4U is a trusted custom software development company with 30+ years of experience. We build enterprise web apps, mobile solutions, and cloud infrastructure for ambitious companies in the US and globally.',
     url: 'https://www.wecode4u.com',
   },
