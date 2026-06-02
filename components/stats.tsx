@@ -9,11 +9,12 @@ import { Award, Clock, Users, Lock, FileCheck } from "lucide-react"
 function CountUp({ to, suffix = "", duration = 1.8 }: { to: number; suffix?: string; duration?: number }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
-  const count = useMotionValue(0)
+  const count = useMotionValue(to) // ← FIXED: real value for SSR/crawlers
   const rounded = useTransform(count, (v) => Math.round(v) + suffix)
 
   useEffect(() => {
     if (!inView) return
+    count.set(0) // reset visually before animating
     const ctrl = animate(count, to, { duration, ease: "easeOut" })
     return ctrl.stop
   }, [inView, to, count, duration])
