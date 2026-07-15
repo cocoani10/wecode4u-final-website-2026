@@ -3,64 +3,8 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight } from "lucide-react"
-import { FreelancerArticle } from "@/components/blog/freelancer-article"
-
-const posts: Record<string, { slug: string; title: string; category: string; date: string; author: string; readTime: string }> = {
-  "why-enterprise-software-projects-fail": {
-    slug: "why-enterprise-software-projects-fail",
-    title: "Why Enterprise Software Projects Fail — And How to Prevent It",
-    category: "Engineering",
-    date: "June 12, 2025",
-    author: "WeCode4U Editorial",
-    readTime: "8 min read",
-  },
-  "freelancer-vs-agency-vs-offshore-team": {
-    slug: "freelancer-vs-agency-vs-offshore-team",
-    title: "Freelancer, Agency, or Offshore Team: Which Model Fits Your Stage?",
-    category: "Offshore / Hiring",
-    date: "May 5, 2026",
-    author: "WeCode4U Editorial",
-    readTime: "5 min read",
-  },
-}
-
-const allPosts = [
-  {
-    slug: "architecture-decisions-that-compound",
-    title: "Architecture Decisions That Compound Over Time",
-    description: "The choices made in the first three months determine a system's ceiling. We examine the decisions we make early, and the long-term consequences of getting them right.",
-    category: "Systems Design",
-    date: "May 2025",
-  },
-  {
-    slug: "the-real-cost-of-technical-debt",
-    title: "The Real Cost of Technical Debt in Custom Software",
-    description: "Technical debt isn't a future problem — it compounds daily. How we quantify it, communicate it to stakeholders, and address it without halting delivery.",
-    category: "Engineering",
-    date: "April 2025",
-  },
-  {
-    slug: "predictability-over-speed",
-    title: "Predictability Over Speed: How We Think About Delivery",
-    description: "Fast delivery is easy to sell. Predictable delivery is what actually builds trust. We explain why we optimise for consistency, not velocity.",
-    category: "Delivery",
-    date: "March 2025",
-  },
-  {
-    slug: "iso-27001-in-practice",
-    title: "ISO 27001 in Practice: What Security Certification Actually Means",
-    description: "Most teams treat ISO 27001 as a badge. We treat it as a baseline. A candid look at what the certification requires and what it doesn't cover.",
-    category: "Security",
-    date: "February 2025",
-  },
-  {
-    slug: "building-long-term-client-partnerships",
-    title: "What Long-Term Client Partnerships Actually Require",
-    description: "We've worked with some clients for over a decade. It's not about account management — it's about accountability and solving the right problems at the right time.",
-    category: "Culture",
-    date: "January 2025",
-  },
-]
+import { ArticleBody } from "@/components/blog/articles"
+import { blogPosts, getBlogPost } from "@/lib/blog"
 
 const BlogVisual = ({ slug }: { slug: string }) => {
   switch (slug) {
@@ -177,8 +121,8 @@ const BlogVisual = ({ slug }: { slug: string }) => {
 }
 
 export function BlogPostContent({ slug }: { slug: string }) {
-  const post = posts[slug] ?? posts["why-enterprise-software-projects-fail"]
-  const relatedPosts = allPosts.filter(p => p.slug !== post.slug).slice(0, 3)
+  const post = getBlogPost(slug) ?? blogPosts[0]
+  const relatedPosts = blogPosts.filter(p => p.slug !== post.slug).slice(0, 3)
 
   return (
     <main className="bg-white">
@@ -220,7 +164,7 @@ export function BlogPostContent({ slug }: { slug: string }) {
             <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-[#a8a29e] border-t border-[#e7e5e4] pt-6">
               <span>{post.author}</span>
               <span className="text-[#d6d3d1]">·</span>
-              <span>{post.date}</span>
+              <span>{post.displayDate}</span>
               <span className="text-[#d6d3d1]">·</span>
               <span>{post.readTime}</span>
             </div>
@@ -238,68 +182,7 @@ export function BlogPostContent({ slug }: { slug: string }) {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="max-w-2xl"
           >
-            {slug === "freelancer-vs-agency-vs-offshore-team" ? (
-              <FreelancerArticle />
-            ) : (
-              <>
-                <p className="text-xl text-[#44403c] leading-relaxed mb-10 font-[450]">
-                  Most enterprise software projects don't fail because of bad code. They fail because of misaligned expectations, unclear ownership, and scope decisions made before anyone truly understood the problem.
-                </p>
-
-                <div className="prose-article">
-
-                  <h2>The failure mode nobody talks about</h2>
-                  <p>
-                    When a large software project collapses, the post-mortem usually points to technical causes — a poorly chosen architecture, an under-resourced team, a platform that couldn't scale. These are real. But they're almost always symptoms, not causes.
-                  </p>
-                  <p>
-                    The actual failure typically began months earlier, in a requirements meeting, a procurement decision, or a kickoff where the right questions weren't asked. By the time code is written, the trajectory is already set.
-                  </p>
-
-                  <h2>Four root causes we see consistently</h2>
-                  <p>
-                    Across hundreds of projects, the failures we've witnessed — and the ones we've been brought in to rescue — cluster around a small set of patterns.
-                  </p>
-
-                  <h3>1. Scope defined before problems are understood</h3>
-                  <p>
-                    Fixed-scope contracts feel safe to procurement teams. They're not. When scope is locked before the domain is well understood, every discovery becomes a change request, every edge case becomes a negotiation, and the team optimises for contract compliance rather than business outcomes.
-                  </p>
-
-                  <h3>2. Ownership gaps between business and engineering</h3>
-                  <p>
-                    Complex systems need someone who can hold both the business intent and the technical implementation in their head simultaneously. When product, engineering, and business operate in separate silos with handoff-based communication, critical context is lost at every boundary.
-                  </p>
-
-                  <h3>3. Delivery cadence that hides problems</h3>
-                  <p>
-                    Quarterly demos create quarterly feedback loops. By the time something is visibly wrong, months of effort have been invested in the wrong direction. High-functioning teams surface problems in days, not quarters.
-                  </p>
-
-                  <h3>4. Technical debt treated as future work</h3>
-                  <p>
-                    Every shortcut compounds. A codebase where debt is routinely deferred becomes progressively harder to change — and the teams working in it become slower at exactly the moment the business needs they move faster.
-                  </p>
-
-                  <h2>What prevention actually looks like</h2>
-                  <p>
-                    Prevention isn't a methodology. It's a set of habits applied consistently. It means requiring real discovery before scope is committed. It means embedding technical judgment into business decisions, not receiving them as downstream requirements. It means building systems that expose failures early — through automated testing, continuous deployment, and feedback loops measured in hours, not weeks.
-                  </p>
-                  <p>
-                    The teams that deliver reliably aren't the ones that never encounter problems. They're the ones that find problems early enough to do something about them.
-                  </p>
-
-                  <h2>A practical starting point</h2>
-                  <p>
-                    If you're evaluating a software engagement — whether you're a buyer or an engineering leader — the single most valuable question you can ask is: how will we know if something is going wrong, and how quickly will we know it?
-                  </p>
-                  <p>
-                    The answer to that question tells you almost everything about how the project will run.
-                  </p>
-
-                </div>
-              </>
-            )}
+            <ArticleBody slug={post.slug} />
 
           </motion.div>
         </div>
@@ -335,7 +218,7 @@ export function BlogPostContent({ slug }: { slug: string }) {
                       {related.category}
                     </span>
                     <span className="text-[#d6d3d1] text-[10px]">—</span>
-                    <span className="text-[11px] text-[#b8b5b0]">{related.date}</span>
+                    <span className="text-[11px] text-[#b8b5b0]">{related.displayDate}</span>
                   </div>
 
                   <h3 className="text-[17px] font-semibold text-[#1a1916] tracking-[-0.03em] leading-snug mb-2.5 group-hover:text-[#fb6e3e] transition-colors duration-150">

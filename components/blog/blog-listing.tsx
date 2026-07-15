@@ -4,67 +4,11 @@ import { useState, useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import { blogPosts, type BlogPost } from "@/lib/blog"
 
 const categories = ["All", "Engineering", "Systems Design", "Delivery", "Security", "Culture", "Offshore / Hiring"]
 
-const posts = [
-  {
-    slug: "freelancer-vs-agency-vs-offshore-team",
-    title: "Freelancer, Agency, or Offshore Team: Which Model Fits Your Stage?",
-    description:
-      "A direct breakdown of cost, speed, control, and scale so you can pick the hiring model that fits where your company is today.",
-    date: "May 2026",
-    category: "Offshore / Hiring",
-  },
-  {
-    slug: "why-enterprise-software-projects-fail",
-    title: "Why Enterprise Software Projects Fail — And How to Prevent It",
-    description:
-      "Most enterprise failures aren't technical. They're organisational — misaligned expectations, unclear ownership, and scope decisions made before anyone understood the problem.",
-    date: "June 2025",
-    category: "Engineering",
-  },
-  {
-    slug: "architecture-decisions-that-compound",
-    title: "Architecture Decisions That Compound Over Time",
-    description:
-      "The choices made in the first three months determine a system's ceiling. We examine the decisions we make early, and the long-term consequences of getting them right.",
-    date: "May 2025",
-    category: "Systems Design",
-  },
-  {
-    slug: "the-real-cost-of-technical-debt",
-    title: "The Real Cost of Technical Debt in Custom Software",
-    description:
-      "Technical debt isn't a future problem — it compounds daily. How we quantify it, communicate it to stakeholders, and address it without halting delivery.",
-    date: "April 2025",
-    category: "Engineering",
-  },
-  {
-    slug: "predictability-over-speed",
-    title: "Predictability Over Speed: How We Think About Delivery",
-    description:
-      "Fast delivery is easy to sell. Predictable delivery is what actually builds trust. We explain why we optimise for consistency, not velocity.",
-    date: "March 2025",
-    category: "Delivery",
-  },
-  {
-    slug: "iso-27001-in-practice",
-    title: "ISO 27001 in Practice: What Security Certification Actually Means",
-    description:
-      "Most teams treat ISO 27001 as a badge. We treat it as a baseline. A candid look at what the certification requires and what it doesn't cover.",
-    date: "February 2025",
-    category: "Security",
-  },
-  {
-    slug: "building-long-term-client-partnerships",
-    title: "What Long-Term Client Partnerships Actually Require",
-    description:
-      "We've worked with some clients for over a decade. It's not about account management — it's about accountability and solving the right problems at the right time.",
-    date: "January 2025",
-    category: "Culture",
-  },
-]
+const posts = blogPosts
 
 /* ─────────────────────────────────────────────────────────────
    VISUALS — one per post, same quality, same h-48 container
@@ -246,7 +190,7 @@ function PostCard({
   index,
   inView,
 }: {
-  post: (typeof posts)[0]
+  post: BlogPost
   index: number
   inView: boolean
 }) {
@@ -268,7 +212,7 @@ function PostCard({
             {post.category}
           </span>
           <span className="text-[#d6d3d1] text-[10px]">—</span>
-          <span className="text-[11px] text-[#b8b5b0]">{post.date}</span>
+          <span className="text-[11px] text-[#b8b5b0]">{post.displayDate}</span>
         </div>
 
         <h2 className="text-[17px] font-semibold text-[#1a1916] tracking-[-0.03em] leading-snug mb-2.5 group-hover:text-[#fb6e3e] transition-colors duration-150">

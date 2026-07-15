@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
@@ -13,8 +14,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.wecode4u.com'),
   title: {
-    template: 'WeCode4U | %s',
-    default: 'WeCode4U | Custom Software Development Company',
+    template: '%s | WeCode4U',
+    default: 'Custom Software Development Company | WeCode4U',
   },
   description: 'WeCode4U is a trusted custom software development company with 30+ years of experience. We build enterprise web apps, mobile solutions, and cloud infrastructure for ambitious companies in the US and globally.',
   keywords: [
@@ -58,11 +59,11 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://www.wecode4u.com',
     siteName: 'WeCode4U',
-    title: 'WeCode4U | Custom Software Development Company',
+    title: 'Custom Software Development Company | WeCode4U',
     description: 'WeCode4U is a trusted custom software development company with 30+ years of experience. We build enterprise web apps, mobile solutions, and cloud infrastructure for ambitious companies in the US and globally.',
     images: [
       {
-        url: 'https://wecode4u.com/og-image.png',
+        url: 'https://www.wecode4u.com/og-image.png',
         width: 1200,
         height: 630,
         alt: 'WeCode4U — Custom Software Development Company',
@@ -71,9 +72,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'WeCode4U | Custom Software Development Company',
+    title: 'Custom Software Development Company | WeCode4U',
     description: 'WeCode4U is a trusted custom software development company with 30+ years of experience. Enterprise software, mobile apps, and cloud solutions.',
-    images: ['https://wecode4u.com/og-image.png'],
+    images: ['https://www.wecode4u.com/og-image.png'],
   },
   alternates: {
     canonical: 'https://www.wecode4u.com',
@@ -151,6 +152,8 @@ const organizationSchema = {
   ],
 }
 
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -167,6 +170,20 @@ export default function RootLayout({
         {children}
         <Footer />
         {process.env.NODE_ENV === 'production' && <Analytics />}
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_ID}');`}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   )
