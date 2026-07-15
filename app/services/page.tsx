@@ -1,4 +1,5 @@
 import { ServicesPageContent } from "@/components/services-page/services-page-content"
+import { servicesFaq } from "@/components/services-page/services-faq"
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -9,12 +10,26 @@ const breadcrumbSchema = {
   ],
 }
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: servicesFaq.map(item => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+}
+
 export default function ServicesPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <ServicesPageContent />
     </>

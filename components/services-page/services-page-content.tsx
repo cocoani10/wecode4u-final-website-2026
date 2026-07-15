@@ -1,6 +1,7 @@
 "use client"
 
 import { motion, useInView } from "framer-motion"
+import { ServicesFAQ } from "@/components/services-page/services-faq"
 import { useRef, useEffect, useState } from "react"
 import { Code2, Smartphone, Cloud, TestTube2, Database, BrainCircuit, ArrowRight, Check } from "lucide-react"
 
@@ -604,6 +605,9 @@ export function ServicesPageContent() {
       {services.map((service, index) => (
         <ServiceSection key={service.id} service={service} index={index} />
       ))}
+
+      {/* FAQ */}
+      <ServicesFAQ />
 
       {/* CTA */}
       <section className="py-24 lg:py-32 bg-white">

@@ -1,3 +1,8 @@
+export interface BlogFaqItem {
+  question: string
+  answer: string
+}
+
 export interface BlogPost {
   slug: string
   title: string
@@ -9,10 +14,45 @@ export interface BlogPost {
   displayDate: string
   author: string
   readTime: string
+  /** When present, renders an FAQ block and FAQPage schema on the post */
+  faq?: BlogFaqItem[]
 }
 
-/** Order matters: the blog listing maps visuals to posts by index. */
+/** Listing renders in array order — keep newest first. */
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "custom-software-development-cost-guide",
+    title: "How Much Does Custom Software Development Cost in 2026?",
+    description:
+      "Custom software costs $15,000–$150,000+ depending on scope, team model, and complexity. A complete 2026 breakdown: costs by project type, offshore vs onshore rates, what drives budgets up, and how to reduce cost without cutting quality.",
+    category: "Offshore / Hiring",
+    date: "2026-07-15",
+    displayDate: "July 15, 2026",
+    author: "WeCode4U Editorial",
+    readTime: "9 min read",
+    faq: [
+      {
+        question: "How much does custom software development cost on average?",
+        answer:
+          "Most custom software projects cost between $15,000 and $150,000+. A simple MVP averages $15,000–$40,000, a mid-size business application $40,000–$100,000, and a complex enterprise platform $100,000–$500,000 or more, depending on integrations, compliance requirements, and team size.",
+      },
+      {
+        question: "Is offshore software development cheaper than hiring locally?",
+        answer:
+          "Yes. Offshore development teams in India typically cost 40–60% less than equivalent US-based teams for the same seniority level, mainly due to cost-of-living differences rather than lower quality. A senior US engineer averages $120,000–$160,000 per year; an equivalent offshore senior engineer averages $35,000–$55,000 per year.",
+      },
+      {
+        question: "What factors increase custom software development costs the most?",
+        answer:
+          "The biggest cost drivers, in order of impact, are: number of third-party integrations, compliance requirements (HIPAA, SOC 2, PCI-DSS), real-time or offline functionality, number of user roles and permission levels, and whether the project requires custom UI/UX design versus a component library.",
+      },
+      {
+        question: "Should I pay a fixed price or hourly rate for custom software?",
+        answer:
+          "Fixed price works best for well-defined projects under 3 months. For anything longer or with evolving requirements, a dedicated team on a monthly retainer is more cost-effective — fixed-price contracts on long projects tend to include a 15–30% risk premium the vendor bakes in to cover scope uncertainty.",
+      },
+    ],
+  },
   {
     slug: "freelancer-vs-agency-vs-offshore-team",
     title: "Freelancer, Agency, or Offshore Team: Which Model Fits Your Stage?",

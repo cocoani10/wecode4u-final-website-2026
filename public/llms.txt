@@ -1,0 +1,31 @@
+# WeCode4U
+
+> WeCode4U is a custom software development company founded in 1994, headquartered in Jaipur, India, serving clients in the US, UK, Australia, Canada, and worldwide. We build enterprise web applications, mobile apps, cloud infrastructure, and data platforms with dedicated senior engineering teams. ISO 27001 and ISO 27701 certified.
+
+Key facts:
+- Founded: 1994 (30+ years of software delivery)
+- Services: custom app & product development, data engineering, AI & intelligent development, enterprise mobility, cloud infrastructure, quality engineering
+- Certifications: ISO 27001 (information security), ISO 27701 (privacy)
+- Engagement models: dedicated development teams, project-based delivery, staff augmentation
+- Clients: US, UK, Australia, Canada, India — enterprise and growth-stage companies
+- Contact: support@wecode4u.com
+
+## Pages
+
+- [Home](https://www.wecode4u.com): What WeCode4U does and who we serve
+- [Services](https://www.wecode4u.com/services): Full list of software development services
+- [How We Work](https://www.wecode4u.com/how-we-work): Delivery process from discovery to launch
+- [Why Us](https://www.wecode4u.com/why-us): Differentiators — senior engineers, ISO certifications, client retention
+- [Case Studies](https://www.wecode4u.com/case-studies): Enterprise project outcomes
+- [About](https://www.wecode4u.com/about): Company history and team
+- [Contact](https://www.wecode4u.com/contact): Book a discovery call
+
+## Blog
+
+- [Freelancer vs Agency vs Offshore Team](https://www.wecode4u.com/blog/freelancer-vs-agency-vs-offshore-team): Choosing a hiring model by company stage
+- [Why Enterprise Software Projects Fail](https://www.wecode4u.com/blog/why-enterprise-software-projects-fail): Root causes and prevention
+- [Architecture Decisions That Compound](https://www.wecode4u.com/blog/architecture-decisions-that-compound): Early technical decisions and long-term consequences
+- [The Real Cost of Technical Debt](https://www.wecode4u.com/blog/the-real-cost-of-technical-debt): Quantifying and paying down technical debt
+- [Predictability Over Speed](https://www.wecode4u.com/blog/predictability-over-speed): Why consistent delivery beats fast delivery
+- [ISO 27001 in Practice](https://www.wecode4u.com/blog/iso-27001-in-practice): What security certification covers and what it doesn't
+- [Long-Term Client Partnerships](https://www.wecode4u.com/blog/building-long-term-client-partnerships): What decade-long engagements require

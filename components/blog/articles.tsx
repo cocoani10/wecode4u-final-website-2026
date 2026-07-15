@@ -1,5 +1,6 @@
 import type { JSX } from "react"
 import { FreelancerArticle } from "@/components/blog/freelancer-article"
+import { getBlogPost } from "@/lib/blog"
 
 /* ─────────────────────────────────────────────────────────────
    ARTICLE BODIES — one component per post slug.
@@ -299,7 +300,117 @@ function PartnershipsArticle() {
   )
 }
 
+function CostGuideArticle() {
+  const faq = getBlogPost("custom-software-development-cost-guide")?.faq ?? []
+
+  return (
+    <>
+      <p className="text-xl text-[#44403c] leading-relaxed mb-10 font-[450]">
+        Custom software development costs between <strong>$15,000 and $150,000+</strong>, depending on scope and team model. A simple MVP averages $15,000–$40,000, a mid-size business application $40,000–$100,000, and a complex enterprise platform $100,000–$500,000 or more. The single biggest lever on that range is whether you hire locally or work with a dedicated offshore team — which typically cuts cost by 40–60% at the same seniority level.
+      </p>
+
+      <div className="prose-article">
+        <h2>Cost by project type (2026)</h2>
+        <p>
+          The table below reflects typical ranges for projects delivered by mid-size development partners in 2026. Highly regulated industries (healthcare, fintech) and projects requiring novel AI features trend toward the top of each range.
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Project type</th>
+              <th>Typical cost</th>
+              <th>Typical timeline</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>MVP / proof of concept</td>
+              <td>$15,000 – $40,000</td>
+              <td>8–14 weeks</td>
+            </tr>
+            <tr>
+              <td>Mid-size business application</td>
+              <td>$40,000 – $100,000</td>
+              <td>3–6 months</td>
+            </tr>
+            <tr>
+              <td>Enterprise platform</td>
+              <td>$100,000 – $500,000+</td>
+              <td>6–12+ months</td>
+            </tr>
+            <tr>
+              <td>Ongoing product development (dedicated team)</td>
+              <td>$8,000 – $25,000 / month</td>
+              <td>Continuous</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Offshore vs. onshore hourly rates</h2>
+        <p>
+          Rates vary by region and seniority, but the pattern is consistent across the industry: offshore engineering delivers comparable seniority at a fraction of the fully-loaded cost of hiring locally.
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>Senior engineer (hourly)</th>
+              <th>Senior engineer (annual, fully loaded)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>United States</td>
+              <td>$80 – $150</td>
+              <td>$120,000 – $160,000</td>
+            </tr>
+            <tr>
+              <td>Western Europe / UK</td>
+              <td>$70 – $130</td>
+              <td>$100,000 – $140,000</td>
+            </tr>
+            <tr>
+              <td>India (offshore, dedicated team)</td>
+              <td>$25 – $45</td>
+              <td>$35,000 – $55,000</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>What actually drives cost up</h2>
+        <p>
+          Two projects with the same feature list on paper can differ in price by 2–3x. In order of impact, the factors that most reliably increase cost are:
+        </p>
+
+        <ol>
+          <li><strong>Third-party integrations.</strong> Each external system (payment processors, CRMs, ERPs, legacy APIs) adds discovery, error handling, and testing surface area — usually 1–3 weeks per integration.</li>
+          <li><strong>Compliance requirements.</strong> HIPAA, SOC 2, and PCI-DSS all require specific architecture patterns, audit logging, and often a compliance review pass before launch — typically adding 15–25% to project cost.</li>
+          <li><strong>Real-time or offline functionality.</strong> Live collaboration, offline-first sync, or real-time dashboards require materially more engineering than standard CRUD applications.</li>
+          <li><strong>Number of user roles.</strong> Every additional permission level multiplies the testing matrix and often reshapes the data model.</li>
+          <li><strong>Custom UI/UX vs. component libraries.</strong> A fully bespoke design system costs meaningfully more than building on shadcn/ui, Material, or a similar library — with no guarantee of a better outcome for internal tools.</li>
+        </ol>
+
+        <h2>How to reduce cost without cutting quality</h2>
+        <p>
+          The reliable way to control cost is sequencing, not corner-cutting. Start with a paid discovery phase (typically 1–2 weeks) to nail down scope before committing to a fixed price — this alone prevents the change-request spiral that inflates most software budgets. Ship an MVP with the smallest feature set that tests your core hypothesis, then expand based on real usage rather than upfront guesses. And favor a dedicated offshore team over a fixed-price contract for anything beyond three months: fixed-price agreements on long timelines usually carry a 15–30% risk premium the vendor prices in to cover scope uncertainty.
+        </p>
+
+        <h2>Frequently asked questions</h2>
+        {faq.map(item => (
+          <div key={item.question}>
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </div>
+        ))}
+      </div>
+    </>
+  )
+}
+
 const articles: Record<string, () => JSX.Element> = {
+  "custom-software-development-cost-guide": CostGuideArticle,
   "freelancer-vs-agency-vs-offshore-team": FreelancerArticle,
   "why-enterprise-software-projects-fail": EnterpriseFailureArticle,
   "architecture-decisions-that-compound": ArchitectureArticle,
