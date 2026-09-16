@@ -56,12 +56,6 @@ const leadership = [
     image: "/team/shashwat-gupta.jpeg",
     bio: "Shashwat Gupta leads technology at WeCode4U with a strong focus on building reliable, scalable, and future-ready software systems. An alumnus of the Indian Institute of Technology (IIT) with additional training at Brown University, he brings a high-performance engineering mindset to every engagement.\n\nHis expertise spans software architecture, system scalability, performance optimization, and product engineering. He plays a central role in ensuring every solution delivered by WeCode4U is robust, efficient, and aligned with long-term business goals.",
   },
-  {
-    name: "Utkarsh Paul",
-    role: "Vice President\nMarketing & Business Development",
-    image: "/team/utkarsh-paul.jpeg",
-    bio: "Utkarsh Paul brings a strong blend of strategic thinking, market execution, and cross-sector leadership to WeCode4U. His professional experience includes growth and expansion initiatives at organizations such as Mahindra Automotive Australia, Bain Capital, and as State Head at HDFC ERGO General Insurance.\n\nHe leads marketing, partnerships, and business development with a focus on expanding market presence, building high-value relationships, and driving measurable commercial growth. His multidisciplinary background enables him to connect strategy with execution effectively.",
-  },
 ]
 
 // ─── Hero Signal Visual ────────────────────────────────────────────────────────
