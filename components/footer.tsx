@@ -97,9 +97,14 @@ export function Footer() {
 
           {/* Bottom Section */}
           <div className="pt-8 border-t border-[#e7e5e4] flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-[#78716c]">
-              &copy; {new Date().getFullYear()} WeCode4U. All rights reserved.
-            </p>
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
+              <p className="text-sm text-[#78716c]">
+                &copy; {new Date().getFullYear()} WeCode4U. All rights reserved.
+              </p>
+              <Link href="/privacy-policy" className="text-sm text-[#78716c] hover:text-[#1a1916] transition-colors">
+                Privacy Policy
+              </Link>
+            </div>
 
             {/* Social Links */}
             <div className="flex items-center gap-4">
